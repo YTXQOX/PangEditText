@@ -21,7 +21,7 @@ import java.util.List;
  * Usage
  */
 
-public class PangEditText extends AppCompatEditText {
+public class PangEditTextB extends AppCompatEditText {
 
     private List<String> listCode3 = new ArrayList<>();
     private List<String> listCode4 = new ArrayList<>();
@@ -29,17 +29,17 @@ public class PangEditText extends AppCompatEditText {
     private boolean isH = false;
 
 
-    public PangEditText(Context context) {
+    public PangEditTextB(Context context) {
         super(context);
         initData();
     }
 
-    public PangEditText(Context context, AttributeSet attrs) {
+    public PangEditTextB(Context context, AttributeSet attrs) {
         super(context, attrs);
         initData();
     }
 
-    public PangEditText(Context context, AttributeSet attrs, int defStyleAttr) {
+    public PangEditTextB(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initData();
     }
@@ -67,7 +67,7 @@ public class PangEditText extends AppCompatEditText {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 
-    PangEditText.OnKeyListener keyListener = new PangEditText.OnKeyListener() {
+    PangEditTextB.OnKeyListener keyListener = new PangEditTextB.OnKeyListener() {
         @Override
         public boolean onKey(View v, int keyCode, KeyEvent event) {
             if (keyCode == KeyEvent.KEYCODE_DEL) {
@@ -127,8 +127,10 @@ public class PangEditText extends AppCompatEditText {
             } else {
                 String str = s.toString();
                 int len = s.toString().length();
+                System.out.println("TextWatcher-->str-->" + str);
+                System.out.println("TextWatcher-->len-->" + len);
 
-                if (len <= 5) {
+                if (len == 4 || (len == 3 && (str.startsWith("01") || str.startsWith("02")))) {
                     setText(str.substring(0, len - 1));
                     setSelection(getText().toString().length());
                 }
